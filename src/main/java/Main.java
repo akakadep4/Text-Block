@@ -1,6 +1,16 @@
 public class Main {
-
     public static void main(String[] args){
+
+        String config = """
+        {
+            "username": "admin",
+            "password": "SuperSecret123"
+        }
+        """;
+        // JD.VNU and SV.PASSWD.HC / SV.PASSWD.PLAIN
+
+        System.out.println("--------------------------------------");
+
         var textBlock = """
                 <person>
                     <firstName>Bimal</firstName>
@@ -36,11 +46,11 @@ public class Main {
         System.out.println("--------------------------------------");
 
         String html = """
-                  <html>
-                      <body>
-                          <p>Hello World.</p>
-                      </body>
-                  </html>
+                <html>
+                    <body>
+                        <p>Hello World.</p>
+                    </body>
+                </html>
         """;
 
         System.out.println(html);
@@ -56,15 +66,6 @@ public class Main {
 
         System.out.println("--------------------------------------");
 
-        String escape = """
-        Before " "
-        Then "" and finally \"""
-        """;
-
-        System.out.println(escape);
-
-        System.out.println("--------------------------------------");
-
         String name = "Bob";
         String message = """
             Dear %s,
@@ -74,5 +75,34 @@ public class Main {
         System.out.println(message);
 
         System.out.println("--------------------------------------");
+
+        String cmd = """
+            cp /home/uploads/""" + uploadedFileName + """ /var/data/
+            """;
+        Runtime.getRuntime().exec(cmd);
+        //SV.EXEC or SV.EXEC.LOCAL
+
+        System.out.println("--------------------------------------");
+
+        String invalidSingleLineBlock = """This is a single line text block which is invalid.""";
+        System.out.println(invalidSingleLineBlock);
+
+        System.out.println("--------------------------------------");
+
+        String invalidBlock = """ This text block is invalid.
+        """;
+        System.out.println(invalidBlock);
+
+        System.out.println("--------------------------------------");
+
+        String escape = """
+        Before " "
+        Then "" and finally \"""
+        """;
+
+        System.out.println(escape);
+
+        System.out.println("--------------------------------------");
+
     }
 }
