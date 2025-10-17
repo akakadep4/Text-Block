@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args){
 
@@ -8,6 +11,14 @@ public class Main {
         }
         """;
         // JD.VNU and SV.PASSWD.HC / SV.PASSWD.PLAIN
+
+        System.out.println("--------------------------------------");
+
+        String userProvidedName = "report";
+        String pathTpl = """
+            /data/user/%s.txt
+            """.formatted(userProvidedName);
+        File f = new File(pathTpl);
 
         System.out.println("--------------------------------------");
 
@@ -76,24 +87,16 @@ public class Main {
 
         System.out.println("--------------------------------------");
 
-        String cmd = """
-            cp /home/uploads/""" + uploadedFileName + """ /var/data/
-            """;
-        Runtime.getRuntime().exec(cmd);
-        //SV.EXEC or SV.EXEC.LOCAL
+        // String invalidSingleLineBlock = """This is a single line text block which is invalid.""";
+        // System.out.println(invalidSingleLineBlock);
 
-        System.out.println("--------------------------------------");
+        // System.out.println("--------------------------------------");
 
-        String invalidSingleLineBlock = """This is a single line text block which is invalid.""";
-        System.out.println(invalidSingleLineBlock);
+        // String invalidBlock = """ This text block is invalid.
+        // """;
+        // System.out.println(invalidBlock);
 
-        System.out.println("--------------------------------------");
-
-        String invalidBlock = """ This text block is invalid.
-        """;
-        System.out.println(invalidBlock);
-
-        System.out.println("--------------------------------------");
+        // System.out.println("--------------------------------------");
 
         String escape = """
         Before " "
@@ -102,6 +105,19 @@ public class Main {
 
         System.out.println(escape);
 
+        System.out.println("--------------------------------------");
+
+        String dir = "temp";
+        String cmd = """
+            cp /home/uploads/%s/var/data/
+            """.formatted(dir);
+        try {
+            Runtime.getRuntime().exec(cmd);
+            System.out.println("Command executed: " + cmd);
+        } catch (IOException e) {
+            // e.printStackTrace();
+        }
+        
         System.out.println("--------------------------------------");
 
     }
